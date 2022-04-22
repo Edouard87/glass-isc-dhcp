@@ -319,7 +319,7 @@ setTimeout(function () {
 
 		if (glass_config.shared_network_warning_threshold > 0 || glass_config.shared_network_critical_threshold > 0) {
 			const execSync = require('child_process').execSync;
-			output         = execSync('./bin/dhcpd-pools -c ' + glass_config.config_file + ' -l ' + glass_config.leases_file + ' -f j -A -s e');
+			output         = execSync(glass_config.dhcp_pools_binary + ' -c ' + glass_config.config_file + ' -l ' + glass_config.leases_file + ' -f j -A -s e');
 			var dhcp_data  = JSON.parse(output);
 
 			/*

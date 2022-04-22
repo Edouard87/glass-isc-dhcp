@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 	res.setHeader('Content-Type', 'application/json');
 
 	const execSync = require('child_process').execSync;
-	output         = execSync('./bin/dhcpd-pools -c ' + glass_config.config_file + ' -l ' + glass_config.leases_file + ' -f j -A -s e');
+	output         = execSync(glass_config.dhcp_pools_binary + ' -c ' + glass_config.config_file + ' -l ' + glass_config.leases_file + ' -f j -A -s e');
 
 	res.send(JSON.stringify(JSON.parse(output)));
 });

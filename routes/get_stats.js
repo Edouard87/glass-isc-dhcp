@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 	var glass_config = json_file.readFileSync('config/glass_config.json');
 
 	const execSync = require('child_process').execSync;
-	let output     = execSync('./bin/dhcpd-pools -c ' + glass_config.config_file + ' -l ' + glass_config.leases_file + ' -f j -A -s e');
+	let output     = execSync(glass_config.dhcp_pools_binary + ' -c ' + glass_config.config_file + ' -l ' + glass_config.leases_file + ' -f j -A -s e');
 
 	var dhcp_data = JSON.parse(output);
 
